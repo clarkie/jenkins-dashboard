@@ -1,0 +1,29 @@
+{
+  "name": "jenkins-dashboard",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clarkie/jenkins-dashboard.git"
+  },
+  "keywords": [
+    "jenkins",
+    "dashboard"
+  ],
+  "author": "clarkie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clarkie/jenkins-dashboard/issues"
+  },
+  "dependencies": {
+    "blessed": "^0.1.56",
+    "blessed-contrib": "^2.0.5",
+    "jenkins": "^0.10.1",
+    "lodash": "^3.8.0",
+    "moment": "^2.10.2"
+  }
+}
