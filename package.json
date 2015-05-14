@@ -26,5 +26,11 @@
     "jenkins": "^0.10.1",
     "lodash": "^3.8.0",
     "moment": "^2.10.2"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-eslint": "^13.0.0",
+    "time-grunt": "^1.2.0"
   }
 }
