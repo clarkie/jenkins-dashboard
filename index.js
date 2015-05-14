@@ -63,11 +63,11 @@ var filterJobs = function (jobs) {
 
 var getJenkinsStatus = function (callback) {
 	jenkins.info(function(err, data) {
-		 if (err) {
+		if (err) {
 			console.log(err);
-		 }
+		}
 
-		 return callback(_.sortBy(filterJobs(data.jobs), 'name'), getJenkinsStatus);
+		return callback(_.sortBy(filterJobs(data.jobs), 'name'), getJenkinsStatus);
 	});
 };
 
