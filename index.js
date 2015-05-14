@@ -3,7 +3,11 @@ var contrib = require('blessed-contrib');
 var _ = require('lodash');
 var moment = require('moment');
 
-var jenkinsUrl = process.env.JENKINS_URL || 'YOUR_JENKINS_SERVER';
+var jenkinsUrl = process.env.JENKINS_URL;
+if (!jenkinsUrl) {
+	console.log('JENKINS_URL not set');
+	process.exit(1);
+}
 jenkinsUrl = 'http://' + jenkinsUrl;
 
 var jobsFilterRegex = new RegExp(process.env.JOBS_FILTER, 'i');
