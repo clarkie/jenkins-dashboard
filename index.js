@@ -5,8 +5,7 @@ var moment = require('moment');
 
 var jenkinsUrl = process.env.JENKINS_URL;
 if (!jenkinsUrl) {
-	console.log('JENKINS_URL not set');
-	process.exit(1);
+	throw new Error('JENKINS_URL not set');
 }
 jenkinsUrl = 'http://' + jenkinsUrl;
 
