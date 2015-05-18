@@ -21,22 +21,34 @@ var defaultStyle = { fg: 'white', bg: 'black', border: { fg: '#f0f0f0' } };
 
 var addJobToGrid = function (job, displayGrid, x, y, w, h) {
 
-	var box = displayGrid.set(x, y, w, h, blessed.box, { content: job.name, style: defaultStyle });
-	box.style.bg = job.color.split('_')[0];
+	jenkins.job.get(job.name, function(err, data) {
+		if (err) {
+			throw err; // FIXME don't throw, fail gracefully
+		}
 
-	if (box.style.bg === 'blue') {
-		box.style.bg = 'green';
-	}
+		var lastBuilt = '';
+		if (data.lastCompletedBuild && data.lastCompletedBuild.number) {
+			lastBuilt = data.lastCompletedBuild.number;
+		}
 
-	if (job.color.split('_')[1] === 'anime') {
+		var box = displayGrid.set(x, y, w, h, blessed.box, { content: job.name + '\n\n' + lastBuilt, style: defaultStyle });
+		box.style.bg = job.color.split('_')[0];
 
-		setTimeout(function () {
-			box.style.bg = '#999999';
-			box.style.fg = 'black';
-			screen.render();
-		}, 1000);
+		if (box.style.bg === 'blue') {
+			box.style.bg = 'green';
+		}
 
-	}
+		if (job.color.split('_')[1] === 'anime') {
+
+			setTimeout(function () {
+				box.style.bg = '#999999';
+				box.style.fg = 'black';
+				screen.render();
+			}, 1000);
+
+		}
+
+	});
 
 };
 
