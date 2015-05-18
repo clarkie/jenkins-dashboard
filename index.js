@@ -21,7 +21,7 @@ var defaultStyle = { fg: 'white', bg: 'black', border: { fg: '#f0f0f0' } };
 
 var addJobToGrid = function (job, displayGrid, x, y, w, h) {
 
-	jenkins.job.get(job.name, function(err, data) {
+	jenkins.job.get(job.name, function (err, data) {
 		if (err) {
 			throw err; // FIXME don't throw, fail gracefully
 		}
