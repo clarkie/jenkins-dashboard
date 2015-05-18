@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/clarkie/jenkins-dashboard.svg?branch=master)](https://travis-ci.org/clarkie/jenkins-dashboard)
 
-![Example Dashboard](https://github.com/clarkie/jenkins-dashboard/raw/master/images/example-dashbaord.gif)
+![Example Dashboard](https://raw.githubusercontent.com/clarkie/jenkins-dashboard/master/images/example-dashboard.gif)
 
 ### Usage
 
