@@ -9,12 +9,23 @@ module.exports = function (grunt) {
 				configFile: 'eslint.json'
 			},
 			target: ['*.js']
+		},
+
+		mochaTest: {
+			options: {
+				reporter: 'spec',
+				timeout: 2000
+			},
+			all: {
+				src: ['test/**/*.js']
+			}
 		}
 
 	});
 
 	grunt.loadNpmTasks('grunt-eslint');
+	grunt.loadNpmTasks('grunt-mocha-test');
 
-	grunt.registerTask('default', ['eslint']);
+	grunt.registerTask('default', ['eslint', 'mochaTest']);
 
 };
