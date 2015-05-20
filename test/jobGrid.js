@@ -84,4 +84,59 @@ describe('jobGrid', function () {
 
 	});
 
+	it('should return 7 coordinates', function() {
+
+		var coords = jobGrid(7);
+
+		expect(coords).to.be.an.array;
+		expect(coords).to.have.length(7);
+
+		expect(coords[0]).to.deep.equal({ x: 0, y: 2, h: 4, w: 4 });
+		expect(coords[1]).to.deep.equal({ x: 4, y: 2, h: 4, w: 4 });
+		expect(coords[2]).to.deep.equal({ x: 8, y: 2, h: 4, w: 4 });
+		expect(coords[3]).to.deep.equal({ x: 0, y: 6, h: 4, w: 4 });
+		expect(coords[4]).to.deep.equal({ x: 4, y: 6, h: 4, w: 4 });
+		expect(coords[5]).to.deep.equal({ x: 8, y: 6, h: 4, w: 4 });
+		expect(coords[6]).to.deep.equal({ x: 0, y: 10, h: 4, w: 4 });
+
+	});
+
+	it('should return 8 coordinates', function() {
+
+		var coords = jobGrid(8);
+
+		expect(coords).to.be.an.array;
+		expect(coords).to.have.length(8);
+
+		expect(coords[0]).to.deep.equal({ x: 0, y: 2, h: 4, w: 4 });
+		expect(coords[1]).to.deep.equal({ x: 4, y: 2, h: 4, w: 4 });
+		expect(coords[2]).to.deep.equal({ x: 8, y: 2, h: 4, w: 4 });
+		expect(coords[3]).to.deep.equal({ x: 0, y: 6, h: 4, w: 4 });
+		expect(coords[4]).to.deep.equal({ x: 4, y: 6, h: 4, w: 4 });
+		expect(coords[5]).to.deep.equal({ x: 8, y: 6, h: 4, w: 4 });
+		expect(coords[6]).to.deep.equal({ x: 0, y: 10, h: 4, w: 4 });
+		expect(coords[7]).to.deep.equal({ x: 4, y: 10, h: 4, w: 4 });
+
+	});
+
+	it('should return 9 coordinates', function() {
+
+		var coords = jobGrid(9);
+
+		expect(coords).to.be.an.array;
+		expect(coords).to.have.length(9);
+
+		expect(coords[0]).to.deep.equal({ x: 0, y: 2, h: 4, w: 4 });
+		expect(coords[1]).to.deep.equal({ x: 4, y: 2, h: 4, w: 4 });
+		expect(coords[2]).to.deep.equal({ x: 8, y: 2, h: 4, w: 4 });
+		expect(coords[3]).to.deep.equal({ x: 0, y: 6, h: 4, w: 4 });
+		expect(coords[4]).to.deep.equal({ x: 4, y: 6, h: 4, w: 4 });
+		expect(coords[5]).to.deep.equal({ x: 8, y: 6, h: 4, w: 4 });
+		expect(coords[6]).to.deep.equal({ x: 0, y: 10, h: 4, w: 4 });
+		expect(coords[7]).to.deep.equal({ x: 4, y: 10, h: 4, w: 4 });
+		expect(coords[8]).to.deep.equal({ x: 8, y: 10, h: 4, w: 4 });
+
+	});
+
+
 });
