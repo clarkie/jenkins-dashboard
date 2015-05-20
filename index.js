@@ -17,7 +17,7 @@ var jenkins = require('jenkins')(jenkinsUrl);
 
 var screen = blessed.screen();
 
-var grid = new contrib.grid({rows: 12, cols: 12, screen: screen});
+var grid = new contrib.grid({rows: 14, cols: 12, screen: screen});
 
 var defaultStyle = { fg: 'white', bg: 'black', border: { fg: '#f0f0f0' } };
 
@@ -33,7 +33,7 @@ var addJobToGrid = function (job, displayGrid, x, y, w, h) {
 			lastBuilt = data.lastCompletedBuild.number;
 		}
 
-		var box = displayGrid.set(x, y, w, h, blessed.box, { content: job.name + '\n\n' + lastBuilt, style: defaultStyle });
+		var box = displayGrid.set(y, x, w, h, blessed.box, { content: job.name + '\n\n' + lastBuilt, style: defaultStyle });
 		box.style.bg = job.color.split('_')[0];
 
 		if (box.style.bg === 'blue') {
