@@ -8,7 +8,7 @@ module.exports = function (grunt) {
 			options: {
 				configFile: 'eslint.json'
 			},
-			target: ['*.js']
+			target: ['*.js', 'lib/**/*.js', 'test/**/*.js']
 		},
 
 		mochaTest: {
