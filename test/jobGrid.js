@@ -35,7 +35,7 @@ describe('jobGrid', function () {
 
 		expect(coords[0]).to.deep.equal({ x: 0, y: 2, h: 6, w: 6 });
 		expect(coords[1]).to.deep.equal({ x: 6, y: 2, h: 6, w: 6 });
-		expect(coords[3]).to.deep.equal({ x: 0, y: 8, h: 6, w: 6 });
+		expect(coords[2]).to.deep.equal({ x: 0, y: 8, h: 6, w: 6 });
 
 	});
 
@@ -48,8 +48,8 @@ describe('jobGrid', function () {
 
 		expect(coords[0]).to.deep.equal({ x: 0, y: 2, h: 6, w: 6 });
 		expect(coords[1]).to.deep.equal({ x: 6, y: 2, h: 6, w: 6 });
-		expect(coords[3]).to.deep.equal({ x: 0, y: 8, h: 6, w: 6 });
-		expect(coords[6]).to.deep.equal({ x: 6, y: 8, h: 6, w: 6 });
+		expect(coords[2]).to.deep.equal({ x: 0, y: 8, h: 6, w: 6 });
+		expect(coords[3]).to.deep.equal({ x: 6, y: 8, h: 6, w: 6 });
 
 	});
 
