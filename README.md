@@ -27,9 +27,9 @@ Regex to pick the jobs you want to display
 
 ### Todo
 
-1. Make it handle any number of jobs and resize the grid accordingly
+1. ~~Make it handle any number of jobs and resize the grid accordingly~~
 2. better error handling
-3. tests
+3. ~~tests~~
 4. make it a command line tool so you could run `jenkins-dash -f=[filter] [url]`
 5. add the last built time to the jobs
 6. get it to handle build pipelines
