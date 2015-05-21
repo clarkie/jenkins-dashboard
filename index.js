@@ -58,18 +58,11 @@ var drawGrid = function (buildStatus, callback) {
 
 	grid.set(0, 4, 2, 4, blessed.box, { content: moment().format('YYYY-MM-DD HH:mm:ss'), style: defaultStyle });
 
-	var coords = jobGrid(6);
+	var coords = jobGrid(Math.min(buildStatus.length, 9));
 
 	coords.forEach(function (gridPos, i) {
 		addJobToGrid(buildStatus[i], grid, gridPos.x, gridPos.y, gridPos.h, gridPos.w);
 	});
-
-	// addJobToGrid(buildStatus[0], grid, 2, 0, 5, 4);
-	// addJobToGrid(buildStatus[1], grid, 2, 4, 5, 4);
-	// addJobToGrid(buildStatus[2], grid, 2, 8, 5, 4);
-	// addJobToGrid(buildStatus[3], grid, 7, 0, 5, 4);
-	// addJobToGrid(buildStatus[4], grid, 7, 4, 5, 4);
-	// addJobToGrid(buildStatus[5], grid, 7, 8, 5, 4);
 
 	screen.render();
 
