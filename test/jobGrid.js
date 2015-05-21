@@ -1,9 +1,11 @@
+/* eslint no-unused-expressions: 1 */
+
 var expect = require('chai').expect;
 var jobGrid = require('../lib/jobGrid');
 
 describe('jobGrid', function () {
 
-	it('should return 1 coordinates', function() {
+	it('should return 1 coordinates', function () {
 
 		var coords = jobGrid(1);
 
@@ -14,7 +16,7 @@ describe('jobGrid', function () {
 
 	});
 
-	it('should return 2 coordinates', function() {
+	it('should return 2 coordinates', function () {
 
 		var coords = jobGrid(2);
 
@@ -26,7 +28,7 @@ describe('jobGrid', function () {
 
 	});
 
-	it('should return 3 coordinates', function() {
+	it('should return 3 coordinates', function () {
 
 		var coords = jobGrid(3);
 
@@ -39,7 +41,7 @@ describe('jobGrid', function () {
 
 	});
 
-	it('should return 4 coordinates', function() {
+	it('should return 4 coordinates', function () {
 
 		var coords = jobGrid(4);
 
@@ -53,7 +55,7 @@ describe('jobGrid', function () {
 
 	});
 
-	it('should return 5 coordinates', function() {
+	it('should return 5 coordinates', function () {
 
 		var coords = jobGrid(5);
 
@@ -68,7 +70,7 @@ describe('jobGrid', function () {
 
 	});
 
-	it('should return 6 coordinates', function() {
+	it('should return 6 coordinates', function () {
 
 		var coords = jobGrid(6);
 
@@ -84,7 +86,7 @@ describe('jobGrid', function () {
 
 	});
 
-	it('should return 7 coordinates', function() {
+	it('should return 7 coordinates', function () {
 
 		var coords = jobGrid(7);
 
@@ -101,7 +103,7 @@ describe('jobGrid', function () {
 
 	});
 
-	it('should return 8 coordinates', function() {
+	it('should return 8 coordinates', function () {
 
 		var coords = jobGrid(8);
 
@@ -119,7 +121,7 @@ describe('jobGrid', function () {
 
 	});
 
-	it('should return 9 coordinates', function() {
+	it('should return 9 coordinates', function () {
 
 		var coords = jobGrid(9);
 
@@ -137,6 +139,5 @@ describe('jobGrid', function () {
 		expect(coords[8]).to.deep.equal({ x: 8, y: 10, h: 4, w: 4 });
 
 	});
-
 
 });
