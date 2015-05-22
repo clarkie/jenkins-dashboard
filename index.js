@@ -3,6 +3,8 @@ var contrib = require('blessed-contrib');
 var _ = require('lodash');
 var moment = require('moment');
 
+var EventEmitter = require('events').EventEmitter;
+
 var jobGrid = require('./lib/jobGrid');
 
 var jenkinsUrl = process.env.JENKINS_URL;
@@ -18,6 +20,7 @@ var jenkins = require('jenkins')(jenkinsUrl);
 var screen = blessed.screen();
 
 var grid = new contrib.grid({rows: 14, cols: 12, screen: screen});
+var ee = new EventEmitter();
 
 var defaultStyle = { fg: 'white', bg: 'black', border: { fg: '#f0f0f0' } };
 
@@ -80,11 +83,18 @@ var filterJobs = function (jobs) {
 var getJenkinsStatus = function (callback) {
 	jenkins.info(function (err, data) {
 		if (err) {
-			console.log(err);
+			return ee.emit('error', err);
 		}
 
 		return callback(_.sortBy(filterJobs(data.jobs), 'name'), getJenkinsStatus);
 	});
 };
+
+ee.on('error', function (err) {
+	grid.set(0, 0, 2, 4, blessed.box, { content: err.message, style: {
+		fg: 'red', bg: 'black', border: { fg: 'red' }
+	}});
+	screen.render();
+});
 
 getJenkinsStatus(drawGrid);
