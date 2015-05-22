@@ -3,8 +3,6 @@ var contrib = require('blessed-contrib');
 var _ = require('lodash');
 var moment = require('moment');
 
-var EventEmitter = require('events').EventEmitter;
-
 var jobGrid = require('./lib/jobGrid');
 
 var jenkinsUrl = process.env.JENKINS_URL;
@@ -20,7 +18,6 @@ var jenkins = require('jenkins')(jenkinsUrl);
 var screen = blessed.screen();
 
 var grid = new contrib.grid({rows: 14, cols: 12, screen: screen});
-var ee = new EventEmitter();
 
 var defaultStyle = { fg: 'white', bg: 'black', border: { fg: '#f0f0f0' } };
 
@@ -57,7 +54,25 @@ var addJobToGrid = function (job, displayGrid, x, y, w, h) {
 
 };
 
-var drawGrid = function (buildStatus, callback) {
+var drawGrid = function (err, buildStatus, callback) {
+
+	var errorLog;
+
+	if (err) {
+		errorLog = err.message;
+	}
+
+	if (!buildStatus) {
+		errorLog = errorLog + '\nNo build information received';
+		buildStatus = [];
+	}
+
+	if (errorLog) {
+		grid.set(0, 0, 2, 4, blessed.box, { content: err.message, style: {
+			fg: 'red', bg: 'black', border: { fg: 'red' }
+		}});
+		screen.render();
+	}
 
 	grid.set(0, 4, 2, 4, blessed.box, { content: moment().format('YYYY-MM-DD HH:mm:ss'), style: defaultStyle });
 
@@ -70,31 +85,34 @@ var drawGrid = function (buildStatus, callback) {
 	screen.render();
 
 	setTimeout(function () {
-		return callback(drawGrid);
+		return callback(null, drawGrid);
 	}, 2000);
 };
 
 var filterJobs = function (jobs) {
+
 	return _.filter(jobs, function (job) {
 		return job.name.match(jobsFilterRegex);
 	});
+
 };
 
-var getJenkinsStatus = function (callback) {
-	jenkins.info(function (err, data) {
-		if (err) {
-			return ee.emit('error', err);
+var getJenkinsStatus = function (err, callback) {
+
+	if (err) {
+		return callback(err, null, getJenkinsStatus);
+	}
+
+	jenkins.info(function (error, data) {
+
+		if (error) {
+			return callback(error, null, getJenkinsStatus);
 		}
 
-		return callback(_.sortBy(filterJobs(data.jobs), 'name'), getJenkinsStatus);
+		return callback(null, _.sortBy(filterJobs(data.jobs), 'name'), getJenkinsStatus);
+
 	});
+
 };
 
-ee.on('error', function (err) {
-	grid.set(0, 0, 2, 4, blessed.box, { content: err.message, style: {
-		fg: 'red', bg: 'black', border: { fg: 'red' }
-	}});
-	screen.render();
-});
-
-getJenkinsStatus(drawGrid);
+getJenkinsStatus(null, drawGrid);
