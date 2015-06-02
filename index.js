@@ -50,25 +50,31 @@ var addJobToGrid = function (job, displayGrid, x, y, w, h) {
 
 		}
 
+		screen.render();
+
 	});
 
 };
 
 var drawGrid = function (err, buildStatus, callback) {
 
-	var errorLog;
+	var errorLog = [];
 
 	if (err) {
-		errorLog = err.message;
+		errorLog.push(err.message);
 	}
 
 	if (!buildStatus) {
-		errorLog = errorLog + '\nNo build information received';
+		errorLog.push('No build information received');
 		buildStatus = [];
 	}
 
-	if (errorLog) {
-		grid.set(0, 0, 2, 4, blessed.box, { content: err.message, style: {
+	if (buildStatus.length > 9) {
+		errorLog.push('More than 9 jobs found!');
+	}
+
+	if (errorLog.length) {
+		grid.set(0, 0, 2, 4, blessed.box, { content: errorLog.join('\n'), style: {
 			fg: 'red', bg: 'black', border: { fg: 'red' }
 		}});
 		screen.render();
@@ -81,8 +87,6 @@ var drawGrid = function (err, buildStatus, callback) {
 	coords.forEach(function (gridPos, i) {
 		addJobToGrid(buildStatus[i], grid, gridPos.x, gridPos.y, gridPos.h, gridPos.w);
 	});
-
-	screen.render();
 
 	setTimeout(function () {
 		return callback(null, drawGrid);
