@@ -1,6 +1,7 @@
 # jenkins-dashboard
 
 [![Build Status](https://travis-ci.org/clarkie/jenkins-dashboard.svg?branch=master)](https://travis-ci.org/clarkie/jenkins-dashboard)
+[![Dependency Status](https://david-dm.org/clarkie/jenkins-dashboard.svg)](https://david-dm.org/clarkie/jenkins-dashboard)
 
 ![Example Dashboard](https://raw.githubusercontent.com/clarkie/jenkins-dashboard/master/images/example-dashboard.gif)
 
