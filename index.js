@@ -13,6 +13,8 @@ jenkinsUrl = 'http://' + jenkinsUrl;
 
 var jobsFilterRegex = new RegExp(process.env.JOBS_FILTER, 'i');
 
+var cols = process.env.COLS;
+
 var jenkins = require('jenkins')(jenkinsUrl);
 
 var screen = blessed.screen();
@@ -82,7 +84,7 @@ var drawGrid = function (err, buildStatus, callback) {
 
 	grid.set(0, 4, 2, 4, blessed.box, { content: moment().format('YYYY-MM-DD HH:mm:ss'), style: defaultStyle });
 
-	var coords = jobGrid(Math.min(buildStatus.length, 9));
+	var coords = jobGrid(Math.min(buildStatus.length, 9), cols);
 
 	coords.forEach(function (gridPos, i) {
 		addJobToGrid(buildStatus[i], grid, gridPos.x, gridPos.y, gridPos.h, gridPos.w);
