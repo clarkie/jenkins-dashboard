@@ -12,7 +12,7 @@ describe('jobGrid', function () {
 		expect(coords).to.be.an.array;
 		expect(coords).to.have.length(1);
 
-		expect(coords[0]).to.deep.equal({ x: 0, y: 2, h: 12, w: 12 });
+		expect(coords[0]).to.deep.equal({ x: 0, y: 2, h: 12, w: 120 });
 
 	});
 
