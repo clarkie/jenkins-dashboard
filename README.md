@@ -20,7 +20,8 @@ JENKINS_URL=[url-to-your-server] JOBS_FILTER=[filter] npm start
 
 #### JENKINS_URL
 (required)
-Pretty obvious but just the root url to your jenkins server (e.g. jenkins.workplace.com)
+Pretty obvious but just the root url to your jenkins server (e.g. `http://jenkins.workplace.com`)
+If you need user credential based authentication for your jenkins instance you can format your URL like this: `http://username:password@jenkins.workplace.com`
 
 #### JOBS_FILTER
 (optional)

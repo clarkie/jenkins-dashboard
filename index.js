@@ -9,7 +9,6 @@ var jenkinsUrl = process.env.JENKINS_URL;
 if (!jenkinsUrl) {
   throw new Error("JENKINS_URL not set");
 }
-jenkinsUrl = "http://" + jenkinsUrl;
 
 var jobsFilterRegex = new RegExp(process.env.JOBS_FILTER, "i");
 
